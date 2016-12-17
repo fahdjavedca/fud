@@ -146,6 +146,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.1.0)
+  coffee-script-source (= 1.12.1)
   jbuilder (~> 2.0)
   jquery-rails
   pg
