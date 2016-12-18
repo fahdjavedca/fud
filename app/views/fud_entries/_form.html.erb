@@ -1,0 +1,25 @@
+<%= form_for(@fud_entry) do |f| %>
+  <% if @fud_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fud_entry.errors.count, "error") %> prohibited this fud_entry from being saved:</h2>
+
+      <ul>
+      <% @fud_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fud %><br>
+    <%= f.text_field :fud %>
+  </div>
+  <div class="field">
+    <%= f.label :anonymous %><br>
+    <%= f.check_box :anonymous %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

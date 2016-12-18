@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fud Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fud</th>
+      <th>Anonymous</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fud_entries.each do |fud_entry| %>
+      <tr>
+        <td><%= fud_entry.fud %></td>
+        <td><%= fud_entry.anonymous %></td>
+        <td><%= link_to 'Show', fud_entry %></td>
+        <td><%= link_to 'Edit', edit_fud_entry_path(fud_entry) %></td>
+        <td><%= link_to 'Destroy', fud_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fud entry', new_fud_entry_path %>

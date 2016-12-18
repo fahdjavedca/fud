@@ -1,0 +1,2 @@
+module FudEntriesHelper
+end
