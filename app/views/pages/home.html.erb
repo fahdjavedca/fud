@@ -1,5 +1,6 @@
 
 	<h1>FUD. <small>Speak your mind. Ask without judgement.</small></h1>
 	<blockquote>Beware: open-mindedness will often say, 'Everything is permissible except a sharp opinion.'<small>Criss Jami, Killosophy</small></blockquote>
-	<p>	<%=link_to 'Sign up here.', '#' %> </p>
-	
+	<% if !user_signed_in? %>
+		<p>	<%=link_to 'Sign up here.', new_user_registration_path %> </p>
+	<% end %>
