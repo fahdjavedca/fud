@@ -1,6 +1,7 @@
 class FudEntriesController < ApplicationController
   before_action :set_fud_entry, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /fud_entries
   # GET /fud_entries.json
   def index
@@ -14,7 +15,7 @@ class FudEntriesController < ApplicationController
 
   # GET /fud_entries/new
   def new
-    @fud_entry = FudEntry.new
+    @fud_entry = current_user.fud_entries.build
   end
 
   # GET /fud_entries/1/edit
@@ -24,8 +25,11 @@ class FudEntriesController < ApplicationController
   # POST /fud_entries
   # POST /fud_entries.json
   def create
-    @fud_entry = FudEntry.new(fud_entry_params)
-
+    @fud_entry = current_user.fud_entries.build(fud_entry_params)
+    if @fud_entry.anonymous == true
+      @fud_entry.update_attribute :user_id, 0
+    end
+    
     respond_to do |format|
       if @fud_entry.save
         format.html { redirect_to @fud_entry, notice: 'Fud entry was successfully created.' }
@@ -40,6 +44,10 @@ class FudEntriesController < ApplicationController
   # PATCH/PUT /fud_entries/1
   # PATCH/PUT /fud_entries/1.json
   def update
+    if @fud_entry.anonymous == true
+      @fud_entry.update_attribute :user_id, 0
+    end
+    
     respond_to do |format|
       if @fud_entry.update(fud_entry_params)
         format.html { redirect_to @fud_entry, notice: 'Fud entry was successfully updated.' }
@@ -71,4 +79,10 @@ class FudEntriesController < ApplicationController
     def fud_entry_params
       params.require(:fud_entry).permit(:fud, :anonymous)
     end
+
+    def correct_user
+      @fud_entry = current_user.fud_entries.find_by(id: params[:id])
+      redirect_to fud_entries_path, notice: "Not authorized to edit this Fud" if @fud_entry.nil?
+    end
+
 end
