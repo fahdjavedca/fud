@@ -3,4 +3,6 @@
 	<blockquote>Beware: open-mindedness will often say, 'Everything is permissible except a sharp opinion.'<small>Criss Jami, Killosophy</small></blockquote>
 	<% if !user_signed_in? %>
 		<p>	<%=link_to 'Sign up here.', new_user_registration_path %> </p>
+	<% else %>
+		<p> <%=link_to 'View all FUD', fud_entries_path %> | <%=link_to 'Submit FUD', new_fud_entry_path %></p>
 	<% end %>
