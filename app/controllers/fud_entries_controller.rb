@@ -1,7 +1,7 @@
 class FudEntriesController < ApplicationController
   before_action :set_fud_entry, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
   # GET /fud_entries
   # GET /fud_entries.json
   def index
