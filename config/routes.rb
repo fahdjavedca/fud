@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     member do
       put "like" => "fud_entries#upvote"
       put "unlike" => "fud_entries#downvote"
-      put "unvote" => "fud_entries#unvote"
     end
   end
   

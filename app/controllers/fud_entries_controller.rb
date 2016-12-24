@@ -1,5 +1,5 @@
 class FudEntriesController < ApplicationController
-  before_action :set_fud_entry, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :unvote]
+  before_action :set_fud_entry, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update]
   # GET /fud_entries
@@ -79,11 +79,6 @@ class FudEntriesController < ApplicationController
 
   def downvote
     @fud_entry.downvote_from current_user
-    redirect_to fud_entries_path
-  end
-
-  def unvote
-    @fud_entry.unvote current_user
     redirect_to fud_entries_path
   end
 
