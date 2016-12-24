@@ -43,6 +43,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # bootstrap framework
 gem 'bootstrap-sass'
 
+# voting gem
+gem 'acts_as_votable'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -56,6 +58,9 @@ gem 'bootstrap-sass'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # awesome_print for rails console
+  gem 'awesome_print'
 end
 
 group :development do

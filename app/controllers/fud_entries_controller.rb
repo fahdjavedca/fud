@@ -1,5 +1,5 @@
 class FudEntriesController < ApplicationController
-  before_action :set_fud_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_fud_entry, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :unvote]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update]
   # GET /fud_entries
@@ -69,6 +69,24 @@ class FudEntriesController < ApplicationController
     end
   end
 
+  #upvote_from user
+  #downvote_from user
+  #unvote_from user
+  def upvote
+    @fud_entry.upvote_from current_user
+    redirect_to fud_entries_path
+  end
+
+  def downvote
+    @fud_entry.downvote_from current_user
+    redirect_to fud_entries_path
+  end
+
+  def unvote
+    @fud_entry.unvote current_user
+    redirect_to fud_entries_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fud_entry
@@ -85,4 +103,4 @@ class FudEntriesController < ApplicationController
       redirect_to fud_entries_path, notice: "Not authorized to edit this Fud" if @fud_entry.nil?
     end
 
-end
+  end

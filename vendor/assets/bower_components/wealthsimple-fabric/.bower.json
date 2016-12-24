@@ -1,0 +1,33 @@
+{
+  "name": "wealthsimple-fabric",
+  "version": "2.0.0",
+  "ignore": [
+    "docs/",
+    ".editorconfig",
+    ".fabric-stats.md",
+    ".gitignore",
+    ".hound.yml",
+    ".ruby-version",
+    ".scss-lint.yml",
+    "_config.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "main": [
+    "scss/fabric.scss"
+  ],
+  "homepage": "https://github.com/wealthsimple/fabric",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0",
+    "commit": "71d9e252edc5f9e0201c98ff41fb59c895208ad8"
+  },
+  "_source": "https://github.com/wealthsimple/fabric.git",
+  "_target": "^2.0.0",
+  "_originalSource": "https://github.com/wealthsimple/fabric.git",
+  "_direct": true
+}

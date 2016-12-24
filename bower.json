@@ -1,0 +1,7 @@
+{
+  "name": "fud",
+  "private": true,
+  "dependencies": {
+    "wealthsimple-fabric": "git@github.com:wealthsimple/fabric.git"
+  }
+}

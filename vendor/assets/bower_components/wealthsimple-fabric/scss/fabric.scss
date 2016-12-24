@@ -1,0 +1,21 @@
+// Fabric master file
+//
+// Imports all Fabric files in their intended order for easy mass-inclusion.
+// Should you need specific files, you can easily use separate `@import`s.
+
+// Global requirements
+@import "variables";
+@import "base-mixins";
+
+// Basecoat
+@import "normalize";
+@import "typography-mixins";
+@import "typography";
+@import "base";
+@import "grid";
+@import "buttons";
+@import "forms";
+
+// Utility classes and icons
+@import "utilities";
+@import "ss-social-circle";

@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  resources :fud_entries
   devise_for :users
   root 'pages#home'
   get 'about' => "pages#about"
-
+  
+  resources :fud_entries do
+    member do
+      put "like" => "fud_entries#upvote"
+      put "unlike" => "fud_entries#downvote"
+      put "unvote" => "fud_entries#unvote"
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

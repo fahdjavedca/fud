@@ -1,11 +1,14 @@
 <h1>Listing Fud Entries</h1>
 
-<table>
+<table border="1">
   <thead>
     <tr>
       <th width="200">Fud</th>
       <th width="200">Email</th>
       <th width="200" colspan="3">Options</th>
+      <th width="80">Upvote</th>
+      <th width="80">Downvote</th>
+      <th width="80">Unvote</th>
       
     </tr>
   </thead>
@@ -22,6 +25,9 @@
         <% if fud_entry.user == current_user || fud_entry.user_id == 0 %>
           <td><%= link_to 'Destroy', fud_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+         <td> <%= link_to 'Like', like_fud_entry_path(fud_entry), method: :put %><br> <span>Upvotes: <%= fud_entry.get_upvotes.size %></span></td>
+         <td> <%= link_to 'Dislike', unlike_fud_entry_path(fud_entry), method: :put %><br> <span>Downvotes: <%= fud_entry.get_downvotes.size %></span></td>
+         <td> <%= link_to 'Unvote', unvote_fud_entry_path(fud_entry), method: :put %> </td>
       </tr>
     <% end %>
   </tbody>

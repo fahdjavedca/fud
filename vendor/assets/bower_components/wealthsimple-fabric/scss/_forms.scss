@@ -1,0 +1,97 @@
+.form-input-text {
+  font-size: 16px;
+  @include font-sans;
+  display: block;
+  width: 100%;
+  color: $color-black;
+  background: $color-white;
+  border: 1px solid $color-gray-35;
+  padding: 13px 15px;
+  margin-bottom: 10px;
+
+  &:focus {
+    outline: 0;
+    border-color: $color-green;
+  }
+
+  @include medium {
+    font-size: 18px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.form-input-text.color-beige {
+  color: $color-gray-60;
+  background-color: $color-light-beige;
+  border-color: $color-gray-35;
+
+  &:focus {
+    border-color: $color-gray-40;
+  }
+}
+
+.form-input-text.size-sm {
+  font-size: 16px;
+  @include font-sans;
+  padding: 8px 12px;
+
+  @include medium {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+}
+
+.form-row-horizontal-legend {
+  text-align: center;
+  color: $color-dark-beige;
+  display: block;
+  margin-bottom: 10px;
+
+  @include medium {
+    text-align: left;
+  }
+}
+
+.form-row-horizontal-md {
+  text-align: center;
+  margin: 0 20px;
+  @include medium {
+    margin: 0;
+    text-align: left;
+
+    .form-element {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+      margin-bottom: 0;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+select.form-control {
+  display: block;
+  width: 100%;
+  height: 60px;
+  padding: 10px 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: $color-gray-80;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid $color-gray-35;
+  border-radius: 4px;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  margin-bottom: 15px;
+}
+
+.size-sm select.form-control,
+select.form-control.size-sm {
+  font-size: 14px;
+  padding: 5px 12px;
+  height: 44px;
+}

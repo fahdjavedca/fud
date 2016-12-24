@@ -47,9 +47,11 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_votable (0.10.0)
     arel (6.0.3)
     autoprefixer-rails (6.5.4)
       execjs
+    awesome_print (1.7.0)
     aws-sdk (2.6.38)
       aws-sdk-resources (= 2.6.38)
     aws-sdk-core (2.6.38)
@@ -197,6 +199,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable
+  awesome_print
   aws-sdk
   bootstrap-sass
   byebug
