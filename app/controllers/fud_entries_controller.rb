@@ -5,7 +5,7 @@ class FudEntriesController < ApplicationController
   # GET /fud_entries
   # GET /fud_entries.json
   def index
-    @fud_entries = FudEntry.all
+    @fud_entries = FudEntry.all.order("created_at DESC")
   end
 
   # GET /fud_entries/1
