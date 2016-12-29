@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 .DS_Store
+
+# Ignore gmail initializer
+/config/initializers/gmail_constants.rb
