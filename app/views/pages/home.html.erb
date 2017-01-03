@@ -1,8 +1,10 @@
 
-	<h1-serif>FUD. <small>Speak your mind. Ask without judgement.</small></h1>
-	<blockquote>Beware: open-mindedness will often say, 'Everything is permissible except a sharp opinion.'<small>Criss Jami, Killosophy</small></blockquote>
+	<div class="container">
+	<h1>FUD. <small>Speak your mind without judgement.</small></h1>
+	<blockquote>Give a man a mask and he'll tell you the truth.<small>Oscar Wilde</small></blockquote>
 	<% if !user_signed_in? %>
-		<p>	<%=link_to 'Sign up here.', new_user_registration_path %> </p>
+		<p>	<%=link_to 'Sign up here.', new_user_registration_path, :class => "btn btn-success" %> </p>
 	<% else %>
-		<%=link_to 'View all FUD', fud_entries_path, class: "button primary-action" %> <%=link_to 'Submit FUD', new_fud_entry_path, class: "button primary-action" %></p>
+		<%=link_to 'View FUD', fud_entries_path, class: "btn btn-primary" %> <%=link_to 'Post FUD', new_fud_entry_path, class: "btn btn-success" %></p>
 	<% end %>
+	</div>

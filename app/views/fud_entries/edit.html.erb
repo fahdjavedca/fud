@@ -1,6 +1,14 @@
-<h1>Editing Fud Entry</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @fud_entry %> |
-<%= link_to 'Back', fud_entries_path %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h1>Edit your FUD?</h1>
+    </div>
+  </div>
+  <div class="panel-body">
+	<%= render 'form' %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'Show', @fud_entry %>
+  	<%= link_to 'Back', fud_entries_path %>
+  </div>
+</div>

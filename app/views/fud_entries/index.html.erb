@@ -1,45 +1,37 @@
 <%= render 'pages/home' unless user_signed_in? %>
-<h1>Listing Fud Entries</h1>
-
-<table border="1">
-  <thead>
-    <tr>
-      <th width="200">Fud</th>
-      <th width="200">Email</th>
-      <th width="200" colspan="3">Options</th>
-      <th width="80">Vote</th>
-      <th width="80"># of Votes</th>
-      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fud_entries.each do |fud_entry| %>
-      <tr>
-        <td><%= fud_entry.fud %></td>
-        <td><%= fud_entry.user.email if fud_entry.user_id != 0 %></td>
+<div class="container">
+  <% @fud_entries.each do |fud_entry| %>
+    <div class="box panel panel-default" style="padding:10px;">
+    <div class="container">
+      <div class="panel-body"><blockquote style="margin-bottom: 0; font-family: Helvetica;"><%= fud_entry.fud %></blockquote>
+        <small><% if fud_entry.user_id != 0 %>
+          Posted by <em><%= fud_entry.user.email %></em>
+        <% else %>
+          Posted by <em>Anonymous</em>
+        <% end %>
+        <%= time_ago_in_words(fud_entry.created_at) %> ago.
+        </small>
+        </div>
         <% if fud_entry.user == current_user %>
-          <td><%= link_to 'Show', fud_entry %></td>
-          <td><%= link_to 'Edit', edit_fud_entry_path(fud_entry) %></td>
+          <%= link_to 'Edit', edit_fud_entry_path(fud_entry), :class => "btn btn-success btn-xs" %>
         <% end %>
-        <% if fud_entry.user == current_user || fud_entry.user_id == 0 %>
-          <td><%= link_to 'Destroy', fud_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if fud_entry.user == current_user %>
+          <%= link_to 'Delete', fud_entry, method: :delete, data: { confirm:'Are you sure you want to delete?' }, :class => "btn btn-danger btn-xs" %>
         <% end %>
-         <td>
-         <% if current_user.voted_up_on? fud_entry %>
-          <%= link_to 'Dislike', unlike_fud_entry_path(fud_entry), method: :put %>
-         <% else %>
-          <%= link_to 'Like', like_fud_entry_path(fud_entry), method: :put %>
-          <% end %> 
-        </td>
-        <td> <span>Upvotes: <%= fud_entry.get_upvotes.size %></span> </td>
-         
+
+        <% if fud_entry.user_id == 0 %>
+          <%= link_to 'Delete', fud_entry, method: :delete, data: { confirm:'Anonymous FUD may make others uncomfortable, so everyone has the option to delete it. Delete?' }, :class => "btn btn-danger btn-xs" %>
+        <% end %>
         
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Fud entry', new_fud_entry_path %>
+          <% if current_user.voted_up_on? fud_entry %>
+            <%= link_to 'Unlike', unlike_fud_entry_path(fud_entry), method: :put, :class => "btn btn-primary btn-xs" %>
+               <span class="badge"><%= fud_entry.get_upvotes.size %></span> 
+          <% else %>
+            <%= link_to 'Like', like_fud_entry_path(fud_entry), method: :put, :class => "btn btn-primary btn-xs" %>
+              <span class="badge"><%= fud_entry.get_upvotes.size %></span> 
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

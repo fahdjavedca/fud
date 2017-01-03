@@ -1,0 +1,47 @@
+<%= render 'pages/home' unless user_signed_in? %>
+<h1>Listing Fud Entries</h1>
+ 
+<table border="1">
+  <thead>
+    <tr>
+      <th width="200">Fud</th>
+      <th width="200">Created</th>
+      <th width="200">Email</th>
+      <th width="200" colspan="3">Options</th>
+      <th width="80">Vote</th>
+      <th width="80"># of Votes</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fud_entries.each do |fud_entry| %>
+      <tr>
+        <td><%= fud_entry.fud %></td>
+        <td><%= fud_entry.created_at.strftime("%b %d, %Y") %></td>
+        <td><%= fud_entry.user.email if fud_entry.user_id != 0 %></td>
+        <% if fud_entry.user == current_user %>
+          <td><%= link_to 'Show', fud_entry %></td>
+          <td><%= link_to 'Edit', edit_fud_entry_path(fud_entry) %></td>
+        <% end %>
+        <% if fud_entry.user == current_user || fud_entry.user_id == 0 %>
+          <td><%= link_to 'Destroy', fud_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+         <td>
+         <% if current_user.voted_up_on? fud_entry %>
+          <%= link_to 'Dislike', unlike_fud_entry_path(fud_entry), method: :put %>
+         <% else %>
+          <%= link_to 'Like', like_fud_entry_path(fud_entry), method: :put %>
+          <% end %> 
+        </td>
+        <td> <span>Upvotes: <%= fud_entry.get_upvotes.size %></span> </td>
+         
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fud entry', new_fud_entry_path %>

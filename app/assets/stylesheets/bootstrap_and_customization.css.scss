@@ -1,1 +1,23 @@
 @import 'bootstrap';
+/* set a max-width for horizontal fluid layout and make it centered */
+.container, .container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 800px; /* or 950px */
+}
+
+.alert {
+	margin-right: auto;
+  	margin-left: auto;
+ 	max-width: 800px;   
+}
+
+.navbar-brand img {
+	width: 75px;
+}
+
+.panel, .panel-default {
+	margin-right: auto;
+  	margin-left: auto;
+ 	max-width: 800px;   
+}

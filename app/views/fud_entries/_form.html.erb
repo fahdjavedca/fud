@@ -10,16 +10,16 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :fud %><br>
-    <%= f.text_field :fud %>
+    <%= f.text_area :fud, placeholder: 'Type your FUD here...', :id => "message_area", :cols => 50, :rows => 4 %>
   </div>
   <div class="field">
-    <%= f.label :anonymous %><br>
+    <%= f.label :'Post Anonymously?' %>&nbsp;
     <%= f.check_box :anonymous, {:checked=>true} %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+    <%= f.submit 'Submit FUD', :class => 'btn btn-primary' %>
+  
+
 <% end %>
